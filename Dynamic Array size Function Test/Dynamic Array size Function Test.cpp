@@ -1,8 +1,9 @@
 #include <iostream>
 
-int ArraySize = 1;
+int ArraySize = 1; // Array starting size and the size after it is resized
 char* CharArray = new char[ArraySize]();
 int CharArrayIndexPointer;
+int ArrayStep = 2; // how much the array will get increased by when it reaches the limit
 
 void AddToDynamicArray(char CharaterToAdd)
 {
@@ -21,14 +22,14 @@ void AddToDynamicArray(char CharaterToAdd)
             std::cout << "TempArray[" << i << "] <- " << ch << std::endl;
         }
 
-        ArraySize += 2; // expand the Array size
+        ArraySize += ArrayStep; // expand the Array size
         CharArray = new char[ArraySize](); // over ride CharArray with new, bigger, array
 
         /*
         ArraySize-2 calculates TempArray size
         Copy all values from Temp array to "old" expanded array
         */
-        for (int i = 0; i < ArraySize-2; i++)
+        for (int i = 0; i < ArraySize-ArrayStep; i++)
         {
             char ch = TempArray[i];
             CharArray[i] = TempArray[i];
